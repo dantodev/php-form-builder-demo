@@ -1,6 +1,6 @@
 {
     "name": "dtkahl/php-form-builder-demo",
-    "description": "demo implementation for php-form-builder",
+    "description": "demo implementation for dtkahl/php-form-builder",
     "license": "MIT",
     "authors": [
         {
