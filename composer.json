@@ -1,0 +1,21 @@
+{
+    "name": "dtkahl/php-form-builder-demo",
+    "description": "demo implementation for php-form-builder",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel",
+            "email": "kontakt@daniel-kahl.de"
+        }
+    ],
+    "require": {
+        "slim/slim": "^3.8",
+        "slim/twig-view": "^2.2",
+        "dtkahl/php-form-builder": "3.0.x-dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
