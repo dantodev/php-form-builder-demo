@@ -6,13 +6,15 @@ use Respect\Validation\Validator;
 class PaymentFieldSet extends FieldSet
 {
 
+    public $template = "forms/payment.twig";
+
     public function setUp()
     {
         $this->setField('type', new SelectField([
                 "options"=>["Credit Card", "PayPal"]
         ]))->setLabel('Payment Type');
         $this->setField('credit_card_number', new TextField)->setLabel('Credit Card Number');
-        $this->setField('paypal_address', new NumberField)->setLabel('PayPal Address');
+        $this->setField('paypal_address', new TextField)->setLabel('PayPal Address');
     }
 
     public function setUpValidators() {
@@ -22,11 +24,6 @@ class PaymentFieldSet extends FieldSet
         } else {
             $this->setValidator('paypal_address', Validator::email());
         }
-    }
-
-    public function render()
-    {
-        return 'payment';
     }
 
 }

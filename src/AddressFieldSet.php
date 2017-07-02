@@ -5,6 +5,7 @@ use Respect\Validation\Validator;
 
 class AddressFieldSet extends FieldSet
 {
+    protected $template = "forms/address.twig";
 
     public function setUp()
     {
