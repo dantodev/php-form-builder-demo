@@ -13,9 +13,25 @@ $container["view"] = function () {
     return $twig;
 };
 
-$app->get("/", function ($request, $response) use ($container) {
+$container["translator"] = function () {
+    $translator = new \Symfony\Component\Translation\Translator('de_DE', new \Symfony\Component\Translation\MessageSelector);
+    $translator->addLoader('array', new \Symfony\Component\Translation\Loader\ArrayLoader);
+    $translator->addResource('array', [
+        "{{name}} must be numeric" => "The field '{{name}}' must be numeric."
+    ], 'de_DE');
+    return $translator;
+};
+
+$app->any("/", function (\Slim\Http\Request $request, \Slim\Http\Response $response) use ($container) {
     $form = new \App\CheckoutForm($container);
-    $form->getField("order_id")->setValue("23456");
+
+    $form->setValidationParams(["translator" => [$this->translator, 'trans']]);
+
+    if ($request->getMethod() == 'POST') {
+        $form->hydrate($request->getParams());
+        $form->validate();
+    }
+
     return $this->view->render($response, "home.twig", [
         "form" => $form
     ]);

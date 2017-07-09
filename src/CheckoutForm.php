@@ -15,7 +15,7 @@ class CheckoutForm extends FieldSet
         $this->setFieldSet('payment', new PaymentFieldSet);
     }
     public function setUpValidators() {
-        $this->setValidator('order_id', Validator::intType()->length(10, 10));
+        $this->setValidator('order_id', Validator::numeric()->length(10, 10));
     }
 
 }

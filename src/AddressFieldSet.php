@@ -21,13 +21,13 @@ class AddressFieldSet extends FieldSet
     }
 
     public function setUpValidators() {
-        $this->setValidator('first_name', Validator::stringType()->length(1,50));
-        $this->setValidator('last_name', Validator::stringType()->length(1,50));
-        $this->setValidator('street', Validator::stringType()->length(1,50));
-        $this->setValidator('number', Validator::stringType()->length(1,5));
-        $this->setValidator('post_code', Validator::stringType()->length(1,5));
-        $this->setValidator('city', Validator::stringType()->length(1,50));
-        $this->setValidator('country', Validator::stringType()->length(1,50));
+        $this->setValidator('first_name', Validator::length(1,50));
+        $this->setValidator('last_name', Validator::length(1,50));
+        $this->setValidator('street', Validator::length(1,50));
+        $this->setValidator('number', Validator::length(1,5));
+        $this->setValidator('post_code', Validator::length(1,5));
+        $this->setValidator('city', Validator::length(1,50));
+        $this->setValidator('country', Validator::length(1,50));
     }
 
     public function render()

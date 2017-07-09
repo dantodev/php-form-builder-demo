@@ -1,3 +1,8 @@
+{% if valid == false %}
+    {% for message in messages %}
+        <div class="error">{{ message }}</div>
+    {% endfor %}
+{% endif %}
 <label>
     <span class="label">{{ field.getLabel }}</span>
     <input type="number" name="{{ field.getName() }}" value="{{ field.getValue() }}">
