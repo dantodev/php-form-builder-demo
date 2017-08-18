@@ -1,12 +1,12 @@
-{% if valid == false %}
-    {% for message in messages %}
+{% if not object.isValid() %}
+    {% for message in object.getMEssages() %}
         <div class="error">{{ message }}</div>
     {% endfor %}
 {% endif %}
 <label>
-    <span class="label">{{ label }}</span>
-    <select name="{{ name }}">
-        {% for value,option in options %}
+    <span class="label">{{ object.getOption('label') }}</span>
+    <select name="{{ object.getName(true) }}">
+        {% for value,option in object.getOption('options') %}
             <option value="{{ value }}">{{ option }}</option>
         {% endfor %}
     </select>

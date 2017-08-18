@@ -1,9 +1,9 @@
-{% if valid == false %}
-    {% for message in messages %}
+{% if not object.isValid() %}
+    {% for message in object.getMessages() %}
         <div class="error">{{ message }}</div>
     {% endfor %}
 {% endif %}
 <label>
-    <span class="label">{{ field.getLabel }}</span>
-    <input type="number" name="{{ field.getName() }}" value="{{ field.getValue() }}">
+    <span class="label">{{ object.getOption('label') }}</span>
+    <input type="number" name="{{ object.getName(true) }}" value="{{ object.getValue() }}">
 </label>

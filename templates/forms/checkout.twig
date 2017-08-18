@@ -1,9 +1,13 @@
 <h2>Checkout Form</h2>
 
 <form action="/" method="post">
-    {% render field_set.order_id %}
-    {% render field_set.delivery_address %}
-    {% render field_set.payment %}
+    {% render object.order_id %}
+    {% render object.delivery_address %}
+    {% render object.payment %}
+    <h1>Siblings:</h1>
+    {% for sibling in object.getChild('siblings').children() %}
+        {% render sibling %}
+    {% endfor %}
     <button type="submit">Submit</button>
 </form>
 

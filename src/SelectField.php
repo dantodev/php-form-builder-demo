@@ -1,22 +1,24 @@
 <?php namespace App;
 
 use Dtkahl\FormBuilder\Field;
+use Dtkahl\TwigRenderableExtension\RenderableInterface;
+use Dtkahl\TwigRenderableExtension\RenderableTrait;
 
-class SelectField extends Field
+class SelectField extends Field implements RenderableInterface
 {
-    protected $template = "forms/select.twig";
-    protected $config = ["options"=>[]];
+    use RenderableTrait;
 
-    public function __construct($config)
+    public function setUp(): void
     {
-        $this->config = array_merge($this->config, $config);
+        $this->template = "forms/select.twig";
     }
 
-    public function getRenderData(array $data = []): array
+    public function getRenderData(): array
     {
-        $data = parent::getRenderData($data);
-        $data["options"] = $this->config["options"];
-        return $data;
+        return [
+            "object" => $this,
+            "options" => $this->getOption("options", []),
+        ];
     }
 
 }
